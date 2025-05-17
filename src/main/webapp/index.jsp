@@ -41,12 +41,24 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-brand {
             font-weight: bold;
             color: #333 !important;
             font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled .navbar-brand {
+            font-size: 1.6rem;
         }
 
         .navbar-nav .nav-link {
@@ -54,11 +66,28 @@
             font-weight: 600;
             transition: all 0.3s ease;
             margin: 0 10px;
+            position: relative;
         }
 
         .navbar-nav .nav-link:hover {
             color: #ff4d4d !important;
             transform: translateY(-2px);
+        }
+        
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #ff4d4d;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Hero Section Enhancements */
@@ -72,6 +101,12 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .hero .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .hero h1 {
@@ -95,6 +130,23 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             margin: 0 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-signup {
@@ -159,6 +211,11 @@
         .products .card-img-top {
             height: 200px;
             object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .products .card:hover .card-img-top {
+            transform: scale(1.1);
         }
 
         /* About Section */
@@ -170,12 +227,23 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .about-img:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .about-img img {
             width: 100%;
             height: 400px;
             object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
         }
 
         .about-content {
@@ -208,6 +276,11 @@
             border-radius: 10px;
             object-fit: cover;
             margin-bottom: 15px;
+            transition: all 0.5s ease;
+        }
+        
+        .menu-item:hover .menu-img {
+            transform: scale(1.05);
         }
 
         .menu-item h4 {
@@ -239,6 +312,11 @@
             height: 250px;
             object-fit: cover;
             opacity: 0.9;
+            transition: all 0.7s ease;
+        }
+        
+        .category-header:hover img {
+            transform: scale(1.05);
         }
 
         .category-header .overlay {
@@ -251,6 +329,11 @@
             align-items: center;
             justify-content: center;
             background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .category-header:hover .overlay {
+            background: rgba(0, 0, 0, 0.6);
         }
 
         .category-header h3 {
@@ -261,6 +344,13 @@
             border: 2px solid white;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .category-header:hover h3 {
+            letter-spacing: 3px;
+            background: rgba(255, 77, 77, 0.3);
+            transform: scale(1.05);
         }
 
         /* Testimonials */
@@ -275,6 +365,31 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to bottom, rgba(255, 77, 77, 0.05), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+            border-radius: 10px;
+        }
+        
+        .testimonial-card:hover::before {
+            height: 100%;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .testimonial-card .quote {
@@ -282,6 +397,12 @@
             color: #ff4d4d;
             opacity: 0.3;
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover .quote {
+            opacity: 0.5;
+            transform: scale(1.1);
         }
 
         .testimonial-card .client {
@@ -339,6 +460,23 @@
             font-size: 1.2rem;
             margin-bottom: 20px;
             color: #333;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff4d4d;
+            transition: all 0.3s ease;
+        }
+        
+        .footer .col-lg-3:hover h5::after {
+            width: 70px;
         }
 
         .footer-links {
@@ -348,6 +486,11 @@
 
         .footer-links li {
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links li:hover {
+            transform: translateX(5px);
         }
 
         .footer-links a {
@@ -370,11 +513,12 @@
             margin-right: 15px;
             font-size: 1.5rem;
             transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .social-links a:hover {
             color: #ff4d4d;
-            transform: translateY(-3px);
+            transform: translateY(-3px) rotate(5deg);
         }
 
         .copyright {
@@ -401,6 +545,12 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             height: 250px;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item img {
@@ -413,6 +563,23 @@
         .gallery-item:hover img {
             transform: scale(1.1);
         }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
 
         /* Back to top button */
         .back-to-top {
@@ -421,8 +588,8 @@
             right: 20px;
             background: #ff4d4d;
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -439,11 +606,95 @@
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            }
         }
 
         .back-to-top:hover {
             background: #ff3333;
             color: white;
+            animation: none;
+            transform: scale(1.1);
+        }
+        
+        /* Scroll Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.animate-left {
+            transform: translateX(-50px);
+        }
+        
+        .animate-on-scroll.animate-right {
+            transform: translateX(50px);
+        }
+        
+        .animate-on-scroll.animate-fade {
+            transform: translateY(0);
+        }
+        
+        .animate-on-scroll.animate-scale {
+            transform: scale(0.9);
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+        
+        /* Staggered animation for children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        
+        .stagger-children.animated > *:nth-child(1) { 
+            transition-delay: 0.1s; 
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-children.animated > *:nth-child(2) { 
+            transition-delay: 0.2s; 
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-children.animated > *:nth-child(3) { 
+            transition-delay: 0.3s; 
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-children.animated > *:nth-child(4) { 
+            transition-delay: 0.4s; 
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-children.animated > *:nth-child(5) { 
+            transition-delay: 0.5s; 
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-children.animated > *:nth-child(6) { 
+            transition-delay: 0.6s; 
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Improved responsive adjustments */
@@ -580,7 +831,7 @@
 
 <!-- Hero Section -->
 <header id="home" class="hero">
-    <div class="container text-center">
+    <div class="container text-center animate-on-scroll animate-fade">
         <h1><b>Love At First Bite</b></h1>
         <h1 class="display-4"><b>Welcome To Our SweetTooth Bakery</b></h1>
         <p class="lead">Freshly baked with love and care, just for you.</p>
@@ -599,14 +850,14 @@
 <!-- About Section -->
 <section id="about" class="about">
     <div class="container">
-        <h2 class="section-title">Our Sweet Story</h2>
+        <h2 class="section-title animate-on-scroll animate-fade">Our Sweet Story</h2>
         <div class="row align-items-center">
-            <div class="col-md-6">
+            <div class="col-md-6 animate-on-scroll animate-left">
                 <div class="about-img">
                     <img src="images/5.jpg" alt="About Our Bakery" class="img-fluid">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 animate-on-scroll animate-right">
                 <div class="about-content">
                     <h3>Baking Happiness Since 2005</h3>
                     <p>The Sweet Tooth Bakery was born from a passion for creating delicious treats that bring joy to people's lives. What started as a small family kitchen experiment has grown into a beloved bakery known throughout the community.</p>
@@ -624,8 +875,8 @@
 <!-- Featured Products -->
 <section class="products">
     <div class="container">
-        <h2 class="section-title">Our Specialties</h2>
-        <div class="row g-4">
+        <h2 class="section-title animate-on-scroll animate-fade">Our Specialties</h2>
+        <div class="row g-4 stagger-children">
             <div class="col-md-4 col-sm-6">
                 <div class="card h-100">
                     <img src="images/2.jpg" class="card-img-top" alt="Custom Cakes">
@@ -663,17 +914,17 @@
 <!-- Menu Section -->
 <section id="menu" class="menu">
     <div class="container">
-        <h2 class="section-title">Our Delicious Menu</h2>
+        <h2 class="section-title animate-on-scroll animate-fade">Our Delicious Menu</h2>
         
         <!-- Cakes Category -->
-        <div class="category-header">
+        <div class="category-header animate-on-scroll animate-fade">
             <img src="images/20.jpg" alt="Cake Category">
             <div class="overlay">
                 <h3>Cakes</h3>
             </div>
         </div>
         
-        <div class="row g-4">
+        <div class="row g-4 stagger-children">
             <div class="col-md-4 col-sm-6">
                 <div class="menu-item h-100">
                     <img src="images/6.jpg" alt="Chocolate Cake" class="menu-img">
@@ -701,14 +952,14 @@
         </div>
         
         <!-- Pastries Category -->
-        <div class="category-header mt-5">
+        <div class="category-header mt-5 animate-on-scroll animate-fade">
             <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Pastry Category">
             <div class="overlay">
                 <h3>Pastries</h3>
             </div>
         </div>
         
-        <div class="row g-4">
+        <div class="row g-4 stagger-children">
             <div class="col-md-4 col-sm-6">
                 <div class="menu-item h-100">
                     <img src="images/9.jpg" alt="Croissant" class="menu-img">
@@ -736,14 +987,14 @@
         </div>
             
         <!-- Breads Category -->
-        <div class="category-header mt-5">
+        <div class="category-header mt-5 animate-on-scroll animate-fade">
             <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Bread Category">
             <div class="overlay">
                 <h3>Breads</h3>
             </div>
         </div>
         
-        <div class="row g-4">
+        <div class="row g-4 stagger-children">
             <div class="col-md-4 col-sm-6">
                 <div class="menu-item h-100">
                     <img src="images/12.jpg" alt="Sourdough" class="menu-img">
@@ -775,8 +1026,8 @@
 <!-- Gallery Section -->
 <section id="gallery" class="gallery">
     <div class="container">
-        <h2 class="section-title">Sweet Moments Gallery</h2>
-        <div class="row g-4">
+        <h2 class="section-title animate-on-scroll animate-fade">Sweet Moments Gallery</h2>
+        <div class="row g-4 stagger-children">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="gallery-item">
                     <img src="images/gallery1.jpg" onerror="this.src='https://images.unsplash.com/photo-1595272568891-123402d0fb3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Freshly Baked Bread">
@@ -814,8 +1065,8 @@
 <!-- Testimonials Section -->
 <section id="testimonials" class="testimonials">
     <div class="container">
-        <h2 class="section-title">What Our Customers Say</h2>
-        <div class="row g-4">
+        <h2 class="section-title animate-on-scroll animate-fade">What Our Customers Say</h2>
+        <div class="row g-4 stagger-children">
             <div class="col-md-4">
                 <div class="testimonial-card h-100">
                     <div class="quote"><i class="fas fa-quote-left"></i></div>
@@ -848,7 +1099,7 @@
 <!-- Footer -->
 <footer id="footer" class="footer">
     <div class="container">
-        <div class="row">
+        <div class="row stagger-children">
             <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                 <a href="#" class="footer-logo">The Sweet Tooth</a>
                 <p>Bringing sweetness to your everyday life with our handcrafted treats made with love.</p>
@@ -922,6 +1173,16 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
     
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
     // Smooth scrolling for navbar links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -953,6 +1214,125 @@
                 }
             });
         }
+        
+        // Initialize scroll animations
+        initScrollAnimations();
+    });
+    
+    // Scroll Animation Function
+    function initScrollAnimations() {
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const staggerElements = document.querySelectorAll('.stagger-children');
+        
+        // Create observer for single elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    // Unobserve after animation
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,  // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px'  // Start animation a bit earlier
+        });
+        
+        // Create observer for staggered children
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    // Unobserve after animation
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Observe all animate elements
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Observe all stagger containers
+        staggerElements.forEach(element => {
+            staggerObserver.observe(element);
+        });
+    }
+    
+    // Add hover effects to menu items with JavaScript for more control
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+            
+            // Add a subtle rotation to the image
+            const img = this.querySelector('.menu-img');
+            if (img) {
+                img.style.transform = 'scale(1.05) rotate(2deg)';
+            }
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+            
+            const img = this.querySelector('.menu-img');
+            if (img) {
+                img.style.transform = '';
+            }
+        });
+    });
+    
+    // Optional: Add parallax effect to hero section
+    window.addEventListener('scroll', function() {
+        const hero = document.querySelector('.hero');
+        const scrollPosition = window.pageYOffset;
+        
+        if (scrollPosition <= 800) {
+            hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        }
+    });
+    
+    // Optional: Add a simple counter animation for stats if you add them later
+    function animateCounter(element, target, duration = 1000) {
+        let start = 0;
+        const increment = target / (duration / 16);
+        
+        function updateCount() {
+            start += increment;
+            if (start >= target) {
+                element.textContent = target;
+                return;
+            }
+            
+            element.textContent = Math.floor(start);
+            requestAnimationFrame(updateCount);
+        }
+        
+        updateCount();
+    }
+    
+    // Image hover effects for galleries
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                img.style.transform = 'scale(1.1) rotate(1deg)';
+            }
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                img.style.transform = '';
+            }
+        });
     });
 </script>
 </body>
