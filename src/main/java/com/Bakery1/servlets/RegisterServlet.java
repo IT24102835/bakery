@@ -65,11 +65,7 @@ public class RegisterServlet extends HttpServlet {
                 // Write user data to the file using FileManager
                 FileManager.writeUserToFile(user, filePath);
 
-                // Store user in session
-                /*HttpSession session = request.getSession();
-                session.setAttribute("currentUser", user);*/
-
-                // Redirect to profile page
+                
                 response.sendRedirect("login.jsp");
 
             } catch (NumberFormatException e) {
@@ -83,31 +79,5 @@ public class RegisterServlet extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        String filePath = FILE_NAME;
-        response.setContentType("text/html;charset=UTF-8");
-
-        try (PrintWriter out = response.getWriter()) {
-
-            // Read user data from the file using FileManager
-            List<String> usersData = FileManager.readUsersFromFile(filePath);
-
-            out.println("<html><head><title>Saved Data</title></head><body>");
-            out.println("<h2>Saved Data from File:</h2>");
-            out.println("<pre>");
-
-            for (String line : usersData) {
-                out.println(line);
-            }
-
-            out.println("</pre>");
-            out.println("<a href='Register.jsp'>Back</a>");
-            out.println("</body></html>");
-
-        } catch (IOException e) {
-            response.getWriter().println("<p style='color:red;'>Error reading file: " + e.getMessage() + "</p>");
-        }
-    }
+    
 }
