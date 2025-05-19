@@ -1,12 +1,12 @@
 package com.Bakery1.models;
 
 public class Users {
-    private String name;
-    private String address;
-    private String city;
-    private int phone;
-    private String email;
-    private String password;
+	protected String name;
+	protected String address;
+	protected String city;
+	protected int phone;
+	protected String email;
+	protected String password;
 
     public Users(String name, String address, String city, int phone, String email, String password) {
         this.name = name;
@@ -40,5 +40,5 @@ public class Users {
     public String toString() {
         return name + "," + address + "," + city +"," + phone + "," + email + "," + password;
     }
-
+ 
 }
