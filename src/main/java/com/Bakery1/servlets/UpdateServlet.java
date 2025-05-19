@@ -7,22 +7,27 @@ import java.io.*;
 import java.util.*;
 import com.Bakery1.utils.UserValidator;
 
+// Servlet annotation to map this servlet to the URL "/UpdateServlet"
 @WebServlet("/UpdateServlet")
 public class UpdateServlet extends HttpServlet {
-
+   
+    // Constant file path to the user data file
     private static final String FILE_NAME = "C:\\Users\\USER\\Desktop\\projectfinal\\bakery\\src\\main\\webapp\\WEB-INF\\users.txt";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String originalEmail = request.getParameter("originalEmail");
-
+        
+        // Retrieve updated user details from form parameters
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         String city = request.getParameter("city");
         String phoneStr = request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
+       
+        // File path to user data
         String filePath = FILE_NAME;
+        
         List<String> lines = new ArrayList<>();
         try {
             UserValidator validator = new UserValidator();
@@ -42,8 +47,8 @@ public class UpdateServlet extends HttpServlet {
                 return;
             }
 
-            // Only check for duplicate phone if it's changed
             int phone = Integer.parseInt(phoneStr);
+            
             if (phone != currentUser.getPhone() && validator.isDuplicatePhone(phoneStr)) {
                 response.sendRedirect("update.jsp?message=Phone number already exists! Please use a different phone number.");
                 return;
@@ -60,8 +65,11 @@ public class UpdateServlet extends HttpServlet {
 
             // Create updated user object and add to lines
             Users updatedUser = new Users(name, address, city, phone, email, password);
+           
+            // Add the updated user data to the lines
             lines.add(updatedUser.toString());
-
+            
+        
             // Write all lines back to file
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
                 for (String l : lines) {
