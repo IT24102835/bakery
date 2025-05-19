@@ -19,12 +19,13 @@ public class DeleteServlet extends HttpServlet {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
+                // Add the line only if it does not contain the e mail
                 if (!line.contains(email)) {
                     lines.add(line);
                 }
             }
         }
-
+        // Overwrite the file with the remaining lines
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (String l : lines) {
                 writer.write(l);
@@ -33,6 +34,7 @@ public class DeleteServlet extends HttpServlet {
         }
 
         request.getSession().invalidate(); // log out
+        // Redirect to confirmation page with success message
         response.sendRedirect("delete1.jsp?message=Account deleted successfully.");
     }
 }
