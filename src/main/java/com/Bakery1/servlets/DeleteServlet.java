@@ -8,6 +8,7 @@ import java.util.*;
 @WebServlet("/DeleteServlet")
 public class DeleteServlet extends HttpServlet {
 
+    // Path to the file containing user data
     private static final String FILE_NAME = "C:\\Users\\USER\\Desktop\\projectfinal\\cakeshop\\src\\main\\webapp\\WEB-INF\\users.txt";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
